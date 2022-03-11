@@ -36,6 +36,7 @@ export default class App extends Component {
     const newState = this.state;
     const newItem = { description, time };
     newState.tasks.splice(0, 0, newItem);
+    newState.showAddTask = false;
     console.log(newState);
     this.setState(newState);
   };
@@ -70,7 +71,7 @@ export default class App extends Component {
             </>
           )}
         />
-        <Route path = '/edit' component = {EditItem}></Route>
+        <Route path = '/edit'><EditItem editTask = {this.editTask}></EditItem></Route>
       </Router>
     );
   }

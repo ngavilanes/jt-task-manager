@@ -11,7 +11,7 @@ export const List = ({ tasks, deleteTask,editTask }) => {
           <h3>{task.time}</h3>
           </div>
           <button className="btn" onClick = {() => deleteTask(index)}>delete</button>
-          <Link to ={{ pathname:'/edit', state:{description:task.description, time: task.time} }}><button className="btn">edit</button></Link>
+          <Link to ={{ pathname:'/edit', state:{description:task.description, time: task.time, index: index} }}><button className="btn">edit</button></Link>
  
         </div>
       ))}

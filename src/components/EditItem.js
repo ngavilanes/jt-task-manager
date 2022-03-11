@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const EditItem = ({description, time}) => {
+const EditItem = ({ editTask }) => {
+  let location = useLocation();
+  let history = useHistory();
+
+  const [time, setTime] = useState(location.state.time);
+  const [desc, setDescription] = useState(location.state.description);
   const changeDescription = (description) => {
-    this.setState({ description: description });
+    setDescription(description);
   };
 
   const changeTime = (time) => {
-    this.setState({ time: time });
+    setTime(time);
   };
 
   const handleSubmit = (event) => {
-    // alert('A name was submitted:' );
+    console.log(location);
     event.preventDefault();
-    this.props.addTask(this.state);
+    const index = location.state.index;
+    editTask(index, desc, time);
+    history.push('/');
   };
   return (
     <div className="container">
@@ -23,7 +32,7 @@ const EditItem = ({description, time}) => {
             <h3>Description</h3>
             <input
               type="text"
-              value={description}
+              value={desc}
               onChange={(e) => changeDescription(e.target.value)}
               placeholder="task description"
             ></input>

@@ -18,7 +18,6 @@ export default class addItem extends Component {
   };
 
   handleSubmit = (event) => {
-    // alert('A name was submitted:' );
     event.preventDefault();
     this.props.addTask(this.state);
   };
